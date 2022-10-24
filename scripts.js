@@ -1,69 +1,43 @@
-const rock = "Rock"
-const paper = "Paper"
-const scissors = "Scissors"
-const choices = [rock, paper, scissors]
-
-const computerSelection = getComputerChoice()
-const playerSelection = getPlayerChoice()
-
-function getPlayerChoice() {
-    let i = prompt('Your Choice?')
-    return i
-}
-
+const choices = ['rock', 'paper', 'scissors']
+let playerSelection
+let computerSelection
 
 function getComputerChoice() {
-    // return a random item from the choices array
-   return choices[Math.floor(Math.random() * choices.length)]
+    //generate a random number using the index of the choices array and return a string
+    let randomNumber = choices[Math.floor(Math.random() *choices.length)]
 
+    if(randomNumber === 1) {
+        computerSelection = 'rock'
+    }
+    if(randomNumber === 2) {
+        computerSelection = 'paper'
+    }
+    if(randomNumber === 3) {
+        computerSelection = 'scissors'
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection(), computerSelection()
-    if (playerSelection === computerSelection) {
-        return `It's a Tie! ${playerSelection} and ${computerSelection} are the same.`
-    } 
-
-    else if (playerSelection === rock && computerSelection == scissors){
-        return `You Win! ${playerSelection} Beats ${computerSelection}`
-    } 
-    
-    else if (playerSelection === rock && computerSelection == paper) {
-        return `You Lose! ${computerSelection} Beats ${playerSelection}!`
+    //plays a single round of Rock Paper and Scissors and return a string with the result
+    if(computerSelection === playerSelection) {
+        result = "Its a Draw!"
     }
-    
-    else if (playerSelection === scissors && computerSelection == paper){
-        return `You Win! ${playerSelection} Beats ${computerSelection}`
-    } 
-    
-    else if (playerSelection === scissors && computerSelection == rock) {
-        return `You Lose! ${computerSelection} Beats ${playerSelection}!`
+    if(computerSelection === 'rock' && playerSelection === 'paper') {
+        result = "you WIN!"
     }
-    
-    else if (playerSelection === paper && computerSelection == rock){
-        return `You Win! ${playerSelection} Beats ${computerSelection}`
-    } 
-    
-    else if (playerSelection === paper && computerSelection == scissors) {
-        return `You Lose! ${computerSelection} Beats ${playerSelection}!`
+    if(computerSelection === 'rock' && playerSelection === 'scissors') {
+        result = "you LOST!"
     }
-
-    
+    if(computerSelection === 'paper' && playerSelection === 'scissors') {
+        result = "you WIN!"
+    }
+    if(computerSelection === 'paper' && playerSelection === 'rock') {
+        result = "you LOST!"
+    }
+    if(computerSelection === 'scissors' && playerSelection === 'rock') {
+        result = "you WIN!"
+    }
+    if(computerSelection === 'scissors' && playerSelection === 'paper') {
+        result = "you LOST!"
+    }
 }
-
-
-    //tie, win, lose
-
-
-
-
-    
-    // player rock
-    //     computer paper
-    //     computer scissors
-    // player paper
-    //     computer rock
-    //     computer scissors
-    // player scissors
-    //     computer rock
-    //     computer paper
