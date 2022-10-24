@@ -1,7 +1,10 @@
 const choices = ['rock', 'paper', 'scissors']
-let playerSelection = getPlayerChoice()
+// let playerSelection = getPlayerChoice()
 let computerSelection = getComputerChoice()
-let result
+let playerWins = "You Win!"
+let computerWins = "Computer Wins!"
+let draw = "Its a Draw!"
+
 
 function getPlayerChoice() {
     let playerChoice = prompt()
@@ -33,9 +36,6 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     //plays a single round of Rock Paper and Scissors and return a string with the result
-    let playerWins = "You Win!"
-    let computerWins = "Computer Wins!"
-    let draw = "Its a Draw!"
     if(computerSelection === playerSelection) {
         return draw
     }
@@ -57,15 +57,27 @@ function playRound(playerSelection, computerSelection) {
     if(computerSelection === 'scissors' && playerSelection === 'paper') {
         return computerWins
     }
-    if (playerWins) {
-        return player
-    } else if (draw) {
-        return draw
-    } else {
-        computerWins
-    }
+    
 }
 
-function game() {
-
+ function result() {
+    //The playRound() function returns either a player Wins, Computer Wins, or draw
+    //Use this function to keep track of those on the game() function.
+    if (playerWins === computerWins) {
+        console.log('DRAW')
+    } else if (playerWins > computerWins) {
+        console.log('The Player Wins the Set')
+    } else {
+        console.log('The Computer Wins the Set')
     }
+ }
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let count = playRound(getPlayerChoice(), getComputerChoice())
+        console.log(count)
+    }
+
+    result()
+
+}
