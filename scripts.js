@@ -7,7 +7,8 @@ let draw = "Its a Draw!"
 
 
 function getPlayerChoice() {
-    let playerChoice = prompt()
+    let playerChoices = prompt('Pick One: Rock, Paper, Scissors')
+    let playerChoice = playerChoices.toLocaleLowerCase()
     if (playerChoice === 'rock'){
         return(playerChoice)
     }
@@ -73,6 +74,9 @@ function playRound(playerSelection, computerSelection) {
  }
 
 function game() {
+    //loops the playRound() function 5 times. after each loop
+    //returns either a playerWins, computerWins or a draw
+    //after that runs the result function to print the winner
     for (let i = 0; i < 5; i++) {
         let count = playRound(getPlayerChoice(), getComputerChoice())
         console.log(count)
