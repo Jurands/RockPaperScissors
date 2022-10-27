@@ -1,10 +1,7 @@
-const choices = ['rock', 'paper', 'scissors']
-// let playerSelection = getPlayerChoice()
 let computerSelection = getComputerChoice()
-let playerWins = "You Win!"
-let computerWins = "Computer Wins!"
-let draw = "Its a Draw!"
-
+let playerScore = 0
+let computerScore = 0
+let gameScore = 0
 
 function getPlayerChoice() {
     let playerChoices = prompt('Pick One: Rock, Paper, Scissors')
@@ -22,6 +19,7 @@ function getPlayerChoice() {
 
 function getComputerChoice() {
     //generate a random number using the index of the choices array and return a string
+    const choices = ['rock', 'paper', 'scissors']
     let randomNumber = choices[Math.floor(Math.random() *choices.length)]
     if(randomNumber === 1) {
         return 'rock'
@@ -38,50 +36,45 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     //plays a single round of Rock Paper and Scissors and return a string with the result
     if(computerSelection === playerSelection) {
-        return draw
+        console.log('draw')
     }
     if(computerSelection === 'rock' && playerSelection === 'paper') {
-        return playerWins
+        console.log('player wins')
+        return playerScore += 1
     }
     if(computerSelection === 'rock' && playerSelection === 'scissors') {
-        return computerWins
+        console.log('cpu wins')
+        return computerScore += 1
     }
     if(computerSelection === 'paper' && playerSelection === 'scissors') {
-        return playerWins
+        console.log('player wins')
+        return playerScore += 1
     }
     if(computerSelection === 'paper' && playerSelection === 'rock') {
-        return computerWins
+        console.log('cpu wins')
+        return computerScore += 1
     }
     if(computerSelection === 'scissors' && playerSelection === 'rock') {
-        return playerWins
+        console.log('player wins')
+        return playerScore += 1
     }
     if(computerSelection === 'scissors' && playerSelection === 'paper') {
-        return computerWins
+        console.log('cpu wins')
+        return computerScore += 1
     }
-    
 }
-
- function result() {
-    //The playRound() function returns either a player Wins, Computer Wins, or draw
-    //Use this function to keep track of those on the game() function.
-    if (playerWins === computerWins) {
-        console.log('DRAW')
-    } else if (playerWins > computerWins) {
-        console.log('The Player Wins the Set')
-    } else {
-        console.log('The Computer Wins the Set')
-    }
- }
-
 function game() {
-    //loops the playRound() function 5 times. after each loop
-    //returns either a playerWins, computerWins or a draw
-    //after that runs the result function to print the winner
     for (let i = 0; i < 5; i++) {
-        let count = playRound(getPlayerChoice(), getComputerChoice())
-        console.log(count)
+        let game = playRound(getPlayerChoice(), getComputerChoice())
+        console.log(game)
+    } if (computerScore > playerScore) {
+        alert('cpu wins the set')
+        console.log('cpu wins the set')
+    } else if (computerScore == playerScore) {
+        console.log('draw set')
+        alert('draw set')
+    } else {
+        console.log('player wins the set')
+        alert('player wins the set')
     }
-
-    result()
-
 }
